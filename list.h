@@ -2,6 +2,7 @@
 #define LIST_H
 
 #include "node.h"
+#include "merge.h"
 
 template <typename T>
 class List {

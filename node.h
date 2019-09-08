@@ -6,7 +6,7 @@ struct Node {
     T data;
     Node<T>* next;
     Node<T>* prev;
-
+    Node(T value):data(value){};
     void killSelf() {
         // TODO
     }
