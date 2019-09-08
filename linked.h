@@ -154,7 +154,9 @@ class LinkedList : public List<T> {
         }
 
         void merge(LinkedList<T> list) {
-            // TODO
+            for (int i=0;i<list.size();i++){
+                this->push_back(list[i]);
+            }
         }
 };
 

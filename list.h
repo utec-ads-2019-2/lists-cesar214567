@@ -29,7 +29,8 @@ class List {
         virtual string name() = 0;
 
         ~List() {
-            // TODO
+            head->killSelf();
+            
         }
 };
 

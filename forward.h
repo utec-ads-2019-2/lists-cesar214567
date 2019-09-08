@@ -45,7 +45,7 @@ class ForwardList : public List<T> {
                 this->nodes++;
             }else{
                 this->tail->next=temp;
-                this->tail=this->tail->next;
+                this->tail=temp;
                 this->nodes++;
             }
             
@@ -70,9 +70,12 @@ class ForwardList : public List<T> {
                 while (temp->next!=this->tail){
                     temp=temp->next;
                 }
-                delete this->tail;
+                Node<T> *temp2=(this->tail);
                 this->tail=temp;
+                temp->next=nullptr;
                 this->nodes--;
+                delete temp2;
+                
             }
         }
 
@@ -100,8 +103,9 @@ class ForwardList : public List<T> {
         }
 
         void clear() {
+            cout<<"inicio"<<endl;
             this->head->killSelf();
-            this->head=nullptr;
+                this->head=nullptr;
             this->tail=nullptr; 
             this->nodes=0;
         }
@@ -121,17 +125,16 @@ class ForwardList : public List<T> {
         }
     
         void reverse() {
-            ForwardList<T> temp;
-            Node<T> *node_temporal=this->head;
-            for (int i=0;i<this->nodes;i++){
-                temp.push_front(node_temporal->data);
-                node_temporal=node_temporal->next;
+            T temp[this->nodes];
+            int cantidad=this->nodes;
+            for (int i=this->nodes-1;i>=0;i--){
+                temp[i]=(*this)[3-i];
             }
             this->clear();
-            for (int i=0;i<temp.size();i++){
+            for (int i=0;i<cantidad;i++){
                 this->push_back(temp[i]);
-            
             }
+            
         }
 
         string name() {
@@ -147,7 +150,10 @@ class ForwardList : public List<T> {
         }
 
         void merge(ForwardList<T> list) {
-            // TODO
+            
+            for (int i=0;i<list.size();i++){
+                this->push_back(list[i]);
+            }
 
 
 

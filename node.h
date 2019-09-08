@@ -6,9 +6,14 @@ struct Node {
     T data;
     Node<T>* next;
     Node<T>* prev;
-    Node(T value):data(value){};
+    Node(T value):data(value),next(nullptr),prev(nullptr){};
     void killSelf() {
-        // TODO
+        if (this->next!=nullptr){
+            this->next->killSelf();
+            delete this;
+        }else{
+            delete this;
+        }
     }
 };
 

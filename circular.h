@@ -111,7 +111,14 @@ class CircularLinkedList : public List<T> {
         }
 
         void clear() {
-            this->head->killSelf();
+            auto temp=this->tail;
+            while(temp!=this->head){
+                temp->next=nullptr;
+                auto temp2=temp->prev;
+                delete temp;
+                temp=temp2;
+            }
+            delete this->head;
             this->head=nullptr;
             this->tail=nullptr; 
             this->nodes=0;
@@ -157,8 +164,10 @@ class CircularLinkedList : public List<T> {
             // TODO
         }
 
-        void merge(LinkedList<T> list) {
-            // TODO
+        void merge(CircularLinkedList<T> list) {
+            for (int i=0;i<list.size();i++){
+                this->push_back(list[i]);
+            }
         }
 };
 
