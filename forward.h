@@ -103,9 +103,8 @@ class ForwardList : public List<T> {
         }
 
         void clear() {
-            cout<<"inicio"<<endl;
             this->head->killSelf();
-                this->head=nullptr;
+            this->head=nullptr;
             this->tail=nullptr; 
             this->nodes=0;
         }
@@ -142,16 +141,15 @@ class ForwardList : public List<T> {
         }
 
         ForwardIterator<T> begin() {
-            // TODO
+            return {this->head};
         }
 
 	    ForwardIterator<T> end() {
-            // TODO
+            return {this->tail};
         }
 
         void merge(ForwardList<T> list) {
-            
-            for (int i=0;i<list.size();i++){
+            for (int i=0;i<list.nodes;i++){
                 this->push_back(list[i]);
             }
 
