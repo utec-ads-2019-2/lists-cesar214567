@@ -29,6 +29,7 @@ class ForwardList : public List<T> {
             if (this->head==nullptr){
                 this->head=temp;
                 this->tail=temp;
+                // Está línea se repite en el else, podría evitarse
                 this->nodes++;
             }else{
                 temp->next=this->head;
@@ -42,6 +43,7 @@ class ForwardList : public List<T> {
             if(this->head==nullptr){
                 this->head=temp;
                 this->tail=temp;
+                // Está línea se repite en el else, podría evitarse
                 this->nodes++;
             }else{
                 this->tail->next=temp;
@@ -52,6 +54,7 @@ class ForwardList : public List<T> {
         }
 
         void pop_front() {
+            // No es necesario en el caso del pop
             if(this->head==nullptr){
                 throw out_of_range("out of range");
             }else{
@@ -63,6 +66,7 @@ class ForwardList : public List<T> {
         }
 
         void pop_back() {
+            // No es necesario en el caso del pop
             if(this->tail==nullptr){
                 throw out_of_range("out of range");
             }else{
@@ -80,6 +84,7 @@ class ForwardList : public List<T> {
         }
 
         T operator[](int index) {
+            // Si índice es negativo?
             if (index>=this->nodes){
                 throw out_of_range("out of range");
             }
@@ -91,6 +96,7 @@ class ForwardList : public List<T> {
         }
 
         bool empty() {
+            // Podría ser una línea return !this->head;
             if (this->nodes==0){
                 return true;
             }else{
@@ -124,6 +130,7 @@ class ForwardList : public List<T> {
         }
     
         void reverse() {
+            // No es tan eficiente
             T temp[this->nodes];
             int cantidad=this->nodes;
             for (int i=this->nodes-1;i>=0;i--){
@@ -145,6 +152,7 @@ class ForwardList : public List<T> {
         }
 
 	    ForwardIterator<T> end() {
+            // Es el siguiente del final
             return {this->tail};
         }
 

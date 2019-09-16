@@ -28,11 +28,13 @@ class LinkedList : public List<T> {
             if (this->head==nullptr){
                 this->head=temp;
                 this->tail=temp;
+                // Lo mismo que forward
                 this->nodes++;
             }else{
                 temp->next=this->head;
                 (this->head)->prev=temp;
                 this->head=temp;
+                  // Lo mismo que forward
                 this->nodes++;
             }
         }
@@ -42,16 +44,19 @@ class LinkedList : public List<T> {
             if(this->head==nullptr){
                 this->head=temp;
                 this->tail=temp;
+                // Lo mismo que forward
                 this->nodes++;
             }else{
                 this->tail->next=temp;
                 temp->prev=this->tail;
                 this->tail=temp;
+                // Lo mismo que forward
                 this->nodes++;
             }
         }
 
         void pop_front() {
+              // Lo mismo que forward
             if(this->head==nullptr){
                 throw out_of_range("out of range");
             }else{
@@ -65,6 +70,7 @@ class LinkedList : public List<T> {
         }
 
         void pop_back() {
+              // Lo mismo que forward
             if(this->tail==nullptr){
                 throw out_of_range("out of range");
             }else{
@@ -78,6 +84,7 @@ class LinkedList : public List<T> {
         }
 
         T operator[](int index) {
+              // Lo mismo que forward
             if (index>=this->nodes){
                 throw out_of_range("out of range");
             }
@@ -150,6 +157,7 @@ class LinkedList : public List<T> {
         }
 
 	    BidirectionalIterator<T> end() {
+              // Lo mismo que forward
             return {this->tail};
         }
 

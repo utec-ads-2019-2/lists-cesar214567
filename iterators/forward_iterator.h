@@ -15,6 +15,7 @@ class ForwardIterator : public Iterator<T> {
         }
 
         bool operator!=(ForwardIterator<T> other) {
+            // Podría ser una línea
             if (this->current==other.current){
                 return false;
             }else{
@@ -23,6 +24,7 @@ class ForwardIterator : public Iterator<T> {
         }
 
         ForwardIterator<T> operator++() {
+            // temporal? Este es el ++it, no el it++
             auto temporal=this->current;
             this->current=this->current->next;
             return temporal;
@@ -30,6 +32,7 @@ class ForwardIterator : public Iterator<T> {
         }
 
         T operator*() {
+            // Caso vacío?
             return this->current->data;
         }
 };

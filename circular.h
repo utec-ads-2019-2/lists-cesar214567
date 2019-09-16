@@ -27,6 +27,7 @@ class CircularLinkedList : public List<T> {
             if (this->head==nullptr){
                 this->head=temp;
                 this->tail=temp;
+                  // Lo mismo que forward
                 this->nodes++;
             }else{
                 temp->next=this->head;
@@ -34,6 +35,7 @@ class CircularLinkedList : public List<T> {
                 this->head=temp;
                 this->head->prev=this->tail;
                 this->tail->next=this->head;
+                  // Lo mismo que forward
                 this->nodes++;
             }
         }
@@ -43,6 +45,7 @@ class CircularLinkedList : public List<T> {
             if(this->head==nullptr){
                 this->head=temp;
                 this->tail=temp;
+                  // Lo mismo que forward
                 this->nodes++;
             }else{
                 this->tail->next=temp;
@@ -50,11 +53,13 @@ class CircularLinkedList : public List<T> {
                 this->tail=temp;
                 this->tail->next=this->head;
                 this->head->prev=this->tail;
+                  // Lo mismo que forward
                 this->nodes++;
             }
         }
 
         void pop_front() {
+              // Lo mismo que forward
             if(this->head==nullptr){
                 throw out_of_range("out of range");
             }else{
@@ -70,6 +75,7 @@ class CircularLinkedList : public List<T> {
         }
 
         void pop_back() {
+              // Lo mismo que forward
             if(this->tail==nullptr){
                 throw out_of_range("out of range");
             }else{
@@ -85,6 +91,7 @@ class CircularLinkedList : public List<T> {
         }
 
         T operator[](int index) {
+            // Si index es mil en una lista de 10?
             if (index>this->nodes-index){
                 Node<T> *temp=this->head;
                 for (int i=0;i<=index-1;i++){
@@ -161,6 +168,7 @@ class CircularLinkedList : public List<T> {
         }
 
 	    BidirectionalIterator<T> end() {
+            // Tu circular tiene tail? Cómo manejas la iteración con while donde it != list.end()
             return {this->tail};
         }
 
